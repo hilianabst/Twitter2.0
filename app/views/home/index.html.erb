@@ -1,0 +1,17 @@
+ <h1>Twitter Hili</h1>
+ 
+ <%if user_signed_in?%>
+     <%= render 'tweets/form', tweet: @tweet %>
+<% end %>
+
+
+
+
+   
+<%= render "shared/card", tweet: @tweet %>
+
+
+
+<div class="float-right">
+<%=paginate @tweets%>
+</div>
