@@ -1,17 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <!-- Navbar content -->
- <i class="fab fa-twitter"></i>
- <a class="navbar-brand" href="<%=root_path%>">Twitter  </a>
- 
+  <div class="logo">
+ <i class="fab fa-twitter fa-3x"></i>
+ <a class="navbar-brand" href="<%=root_path%>">Twitter </a>
+ </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+   <%# Hola <%= current_user.photo_url %>  
+   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto ">
         <%if user_signed_in? %>
             <li class="nav-item">
-                <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class:"nav-link" %>
+                   <%= image_tag (current_user.photo_url), class:"photo_user_nav rounded ml-3" %> 
+           </li>  
+              
+           <li class="nav-item">
+                   <%= link_to 'Mi perfil',  home_index_path, class:"nav-link" %>
+            </li> 
+                    <%# <%= link_to "Mi perfil #{image_tag(current_user.photo_url)}".html_safe,  home_index_path, :class =>"mr-sm-2 w-25 nav-link"%> 
+                  <%# <%=  link_to image_tag(current_user.photo_url),  home_index_path,class:"photo_user_nav md-4"%> 
+             <li class="nav-item">      
+                <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :get, class:"nav-link" %>
             </li>
 
         <% else %>
@@ -24,9 +37,46 @@
         <% end %>   
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    <%# <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> %>
+
+    <div class="form-inline my-2 my-lg-0">
+      <%=form_tag(root_path, method: :get) do %>
+        <%=text_field_tag(:search, params[:search], :class =>"form-control mr-sm-2")%>
+        <%=submit_tag("Buscar", :class =>"btn btn-outline-primary my-2 my-sm-0")%>
+        <%#<%= link_to "Limpiar", all_tweets_path, :class =>"btn btn-outline-info my-2 my-sm-0"%>
+       
+      <%end%>
+      
+    </div>
+ 
+ 
+
+
+
+
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

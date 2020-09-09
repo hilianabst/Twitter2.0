@@ -3,27 +3,26 @@
   <head>
      
     <title>Twitter</title>
+    
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <script src="https://kit.fontawesome.com/ab72e68cce.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/ab72e68cce.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
-  <%# <style>
-  .photo_user{
-    width: 50px;
-}
-  </style> %>
 
 
   <body>
+  
     <div class ="row">
       <div class ="col-12">
         <%= render "shared/navbar"%>
       </div>
 
+       
       <div class ="container mt-5  w-50 ">
           <% if alert || notice %>
             <div class ="alert alert-info" role="alert">
@@ -31,7 +30,10 @@
               <%= alert %>
             </div> 
           <% end %>      
-   
+
+        <%if user_signed_in?%>
+            <%= render 'tweets/form', tweet: @tweet %>
+        <% end %>
         <%= yield %>
        </div>
     </div>

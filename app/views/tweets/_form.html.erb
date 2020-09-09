@@ -12,13 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content, "#{current_user.username} dice:"%>
-    <%= form.text_area :content, id: :tweet_content, :class=>"form-control"%>
+    <%# <%= form.label :content, "#{current_user.username} dice:"%>
+        <div class="field saludo">
+            <h1>¡Hola <%= current_user.username %>!</h1>
+        </div>
+    <%= form.text_area :content, id: :tweet_content, :class=>"form-control", :placeholder => "¿Que estas pensando?"%>
   </div>
 
   
 
   <div class="actions text-right my-3">
-    <%= form.submit "Publicar", :class=> "btn btn-primary" %>
+    <%= form.submit "Twittear", :class=> "btn btn-primary" %>
   </div>
 <% end %>
+
